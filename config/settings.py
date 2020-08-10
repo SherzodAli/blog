@@ -29,7 +29,8 @@ SECRET_KEY = os.environ.get('DJANGO SECRET KEY', 'u6!c+591d!69(c$jbs98hrjtee0gle
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DJANGO DEBUG', True))
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'https://obscure-mesa-32276.herokuapp.com/',
+                 'obscure-mesa-32276.herokuapp.com', '[::1]']
 
 
 # Application definition
