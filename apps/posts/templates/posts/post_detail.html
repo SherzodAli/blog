@@ -1,0 +1,30 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block title %}
+{{ post.title }}
+{% endblock title %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
+{% endblock link %}
+
+{% block content %}
+
+<article class="content">
+    <div class="post">
+        <h3 class="header">{{ post.title }}</h3>
+        <div class="post_image">
+            {% if post.image %}
+            <img src="{{ post.image.url }}" alt="">
+            {% else %}
+            <img src="{% static 'img/1statya_2.png' %}" alt="">
+            {% endif %}
+        </div>
+        <div class="post_content">
+            <p>{{ post.summary|safe }}</p>
+        </div>
+    </div>
+</article>
+
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block title %}
+Создание поста
+{% endblock title %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/post_create.css' %}">
+{% endblock link %}
+
+{% block content %}
+<div class="container">
+    <form enctype="multipart/form-data" method="POST" id="form">
+        {% csrf_token %}
+        {{ form.media }}
+
+        <h1 class="header">Добавить статью</h1>
+        <div class="title">
+            {{ form.title }}
+            <button class="btn-create" type="submit">Опубликовать</button>
+        </div>
+        <div class="descr">
+            {{ form.summary }}
+            <div class="image">
+                <h3 class="header">Загрузить изображение</h3>
+                {{ form.image }}
+                <label for="id_image" class="add-image">Файл</label>
+                <div class="image-change">
+                    <img src="" alt="" class="img-preview">
+                    <i class="fas fa-times close"></i>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'js/post_create.js' %}"></script>
+{% endblock script %}

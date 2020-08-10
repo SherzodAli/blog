@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+    <script src="https://kit.fontawesome.com/7d1c34fa97.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block link %}
+    {% endblock link %}
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="{% static 'img/logo_kodland.png' %}" alt="logo_kodland">
+            </div>
+            <ul>
+                <li><a href="{% url 'main' %}" class="blog">Блог</a></li>
+            </ul>
+        </nav>
+        <a href="{% url 'post_create' %}" class="btn btn-add">+ Добавить статью</a>
+    </header>
+    <hr>
+
+    {% block content %}
+    {% endblock content %}
+
+
+    {% block script %}
+    {% endblock script %}
+</body>
+</html>

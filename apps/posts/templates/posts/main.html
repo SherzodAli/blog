@@ -1,0 +1,54 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block title %}
+Главная
+{% endblock title %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock link %}
+
+{% block content %}
+{% for post in posts %}
+{% if forloop.first %}
+<article class="new_post">
+    <div class="text">
+        <p class="new">new</p>
+        <h1 class="header">{{ post.title }}</h1>
+        <p>{{ post.summary|safe|slice:"360" }}...</p>
+        <a class="btn" href="{{ post.get_absolute_url }}">Читать</a>
+    </div>
+    <div class="illustration">
+        {% if post.image %}
+        <img src="{{ post.image.url }}" alt="">
+        {% else %}
+        <img src="{% static 'img/1statya_3.png' %}" alt="">
+        {% endif %}
+    </div>
+</article>
+{% endif %}
+{% endfor %}
+<hr>
+<article class="more">
+    <h2>Другие статьи</h2>
+    <div class="container">
+        {% for post in posts %}
+        {% if not forloop.first %}
+        <div class="column">
+            <p class="date">{{ post.date|date:"d M Y H:i" }}</p>
+            <div class="image">
+                {% if post.image %}
+                <img src="{{ post.image.url }}" alt="">
+                {% else %}
+                <img src="{% static 'img/1statya_2.png' %}" alt="">
+                {% endif %}
+            </div>
+            <a href="{{ post.get_absolute_url }}" class="name">{{ post.title }}</a>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</article>
+
+{% endblock content %}
