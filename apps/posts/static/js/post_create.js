@@ -16,7 +16,6 @@ inputImage.addEventListener('change', function () {
 
         reader.addEventListener('load', function () {
             imagePreview.setAttribute('src', this.result)
-            document.querySelector('#id_image').value = this.result
         })
         reader.readAsDataURL(file)
     }
@@ -26,5 +25,4 @@ closeButton.addEventListener('click', function () {
     imagePreview.setAttribute('src', null)
     imageContainer.style.display = 'none'
     imageTitle.style.display = 'block'
-    document.querySelector('#id_image').value = ''
 })
